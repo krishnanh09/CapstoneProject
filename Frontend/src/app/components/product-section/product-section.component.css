@@ -1,0 +1,15 @@
+.flex-container {
+    margin: 2% 2%;
+    display: flex;
+    flex-wrap: wrap;   
+    flex-direction: row; 
+    gap: 2rem;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+    background:blue;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+    border-width: 1px;
+}

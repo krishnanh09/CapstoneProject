@@ -1,0 +1,51 @@
+<div class="card-section">
+    <div class="card" style="width:40rem">        
+        <div class="card-body">
+            <form [formGroup]="editForm">
+                <div class="row my-1">
+                    <div class="col-6">
+                        <label for="ProductName" style="font-weight: 600;font-size: 14px;color:lightgrey">Product
+                            Name</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" pInputText formControlName="productName" />
+                    </div>
+                </div>
+                <div class="row my-1">
+                    <div class="col-6">
+                        <label for="ProductName" style="font-weight: 600;font-size: 14px;color:lightgrey">Price</label>    
+                    </div>
+                    <div class="col-6">
+                        <input type="text" pInputText formControlName="price" />
+                    </div>
+                </div>
+                <div class="row my-1">
+                    <div class="col-6">
+                        <label for="ProductName"
+                            style="font-weight: 600;font-size: 14px;color:lightgrey">Category</label>
+
+                    </div>
+                    <div class="col-6">
+                        <p-dropdown [options]="categories" formControlName="category" placeholder="Please Select"
+                            optionLabel="name" (onChange)="changeCategory($event)"></p-dropdown>
+                    </div>
+                </div>
+                <!-- <div class="row my-1">
+                    <div class="col-6">
+                        <label for="ProductImage" style="font-weight: 600;font-size: 14px;color:lightgrey">Product
+                            Image</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="file" pInputText formControlName="productImage"  (onChange)="changeImage($event)"/>
+                    </div>
+                </div> -->
+            </form>
+        </div>
+        <div class="card-footer" style="display:flex;justify-content: center;align-items: center;">
+            <button type="button" class="btn btn-light" style="border:1px solid black;margin:1%; width:10rem;" (click)="onCancel($event)" >Cancel</button>
+            <button type="button" class="btn btn-primary" style="border:1px solid black;margin:1%; width:10rem;" (click)="onSave($event)" >Save</button>
+        </div>
+    </div>
+</div>
+
+

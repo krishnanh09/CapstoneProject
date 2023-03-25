@@ -1,0 +1,13 @@
+
+
+:host ::ng-deep .p-inputnumber-buttons-horizontal .p-inputnumber-input{
+    width: 200%!important;
+}
+
+:host ::ng-deep .p-inputnumber-buttons-horizontal .p-button.p-inputnumber-button-up{
+    width: 25%!important;
+}
+
+:host ::ng-deep .p-inputnumber-buttons-horizontal .p-button.p-inputnumber-button-down{
+    width: 25%!important;
+}

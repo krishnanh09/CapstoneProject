@@ -1,0 +1,16 @@
+:host ::ng-deep .p-inputtext{
+    width:80%!important;
+}
+
+:host ::ng-deep .p-dropdown{
+    width:80%!important;
+}
+
+.image-preview{
+    height:15rem;
+    margin:1rem;
+}
+
+.image-preview img{
+    height: 100%;
+}

@@ -1,0 +1,42 @@
+
+<div class="container-fluid" *ngIf="verifyAdmin">
+    <p-table [value]="products" [tableStyle]="{'max-width': '60rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ProductName</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.productName}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.price}}</td>
+                <td>
+                    <button type="button" class="btn btn-light" style="border:1px solid black;margin:1%; width:10rem;" (click)="onEdit($event,product)" >Edit</button>
+                    <button type="button" class="btn btn-light" style="border:1px solid black;margin:1%; width:10rem;" (click)="onDelete($event,product)" >Delete</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<div *ngIf="dialog.visibility">
+    <p-dialog [(visible)]="dialog.visibility" position="center">
+        <ng-template pTemplate="header">
+            <h5 style="font-size:16px;font-weight:700;color:black">{{dialog.title}}</h5>
+        </ng-template>
+        <ng-template pTemplate="content">
+            <app-edit-product [product]="editProduct" [id]="productId" (productUpdated)="onUpdatedProduct($event)"></app-edit-product>
+        </ng-template>        
+        <ng-template pTemplate="footer">            
+        </ng-template>
+    </p-dialog>
+</div>
+
+
+<app-acess-alert [dialog]="warningDialog"></app-acess-alert>
+
+

@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand me-4" href="#">Big Groceries</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item p-2" *ngIf="userIsAuthenticated">
+                    <a class="nav-link" aria-current="page" (click)="onHome($event)">Home</a>
+                </li>
+                <li class="nav-item p-2" *ngIf="userIsAuthenticated && isAdmin">
+                    <a class="nav-link" aria-current="page" (click)="onAdd($event)">Add Product</a>
+                </li>
+                <li class="nav-item p-2"*ngIf="userIsAuthenticated && isAdmin">
+                    <a class="nav-link" aria-current="page" (click)="onView($event)">View Product</a>
+                </li>
+                <li class="nav-item p-2" *ngIf="userIsAuthenticated && isAdmin">
+                    <a class="nav-link" aria-current="page" (click)="onUsers($event)">Users</a>
+                </li>
+            </ul>
+            <span class="spacer"></span>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+            <div style="float:right">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item p-2" *ngIf="!userIsAuthenticated">
+                        <a class="nav-link active" aria-current="page" (click)="onLogin($event)">Login</a>
+                    </li>
+                    <li class="nav-item dropdown p-2" *ngIf="userIsAuthenticated">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            User
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li (click)="onOrders($event)"><a class="dropdown-item">
+                                    My Order</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item p-2" *ngIf="userIsAuthenticated">
+                        <a class="nav-link" aria-current="page" (click)="onLogout($event)">Logout</a>
+                    </li>
+                    <li class="nav-item p-2" *ngIf="!userIsAuthenticated">
+                        <a class="nav-link" aria-current="page">SignUp</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- <p-progressSpinner *ngIf="onLoading"></p-progressSpinner> -->

@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <h5 style="font-weight: 700;color:black;font-size:22px;" class="mb-3">Cart Section</h5>
+    <p-table [value]="products" [tableStyle]="{'max-width': '60rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ProductName</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total Price</th>                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.productName}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.price}}</td>   
+                <td>{{product.price * product.quantity}}</td>             
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <tr>
+                <td>Amount</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{amount}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-light" style="border:1px solid black;margin:1%; width:6rem;" (click)="onCancel($event)">Cancel</button>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>                    
+                    <button type="button" class="btn btn-light" style="border:1px solid black;margin:1%; width:6rem;" (click)="onProceed($event)">Proceed</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<div *ngIf="dialog.visibility">
+    <p-dialog [(visible)]="dialog.visibility" position="center">
+        <ng-template pTemplate="header">
+            <h5 style="font-size:16px;font-weight:700;color:black">{{dialog.title}}</h5>
+        </ng-template>
+        <ng-template pTemplate="content">
+           <p style="font-size:14px; font-weight:600;color:black;">{{dialog.message}}</p>
+        </ng-template>        
+        <ng-template pTemplate="footer"> 
+            <div style="display:flex;justify-content: center;align-items: center;" *ngIf="dialog.title === 'Order Confirmation'">
+                <button type="button" class="btn btn-light" style="border:1px solid black;margin:1%; width:6rem;" (click)="onOrderNo($event)">No</button>
+                <button type="button" class="btn btn-primary" style="border:1px solid black;margin:1%; width:6rem;" (click)="onOrderYes($event)">Yes</button>
+            </div>     
+            <div style="display:flex;justify-content: center;align-items: center;" *ngIf="dialog.title === 'Confirmed'">
+                <button type="button" class="btn btn-primary" style="border:1px solid black;margin:1%; width:6rem;" (click)="onOrderConfirmation($event)">Yes</button>
+            </div>      
+        </ng-template>
+    </p-dialog>
+</div>
+
+
+
+

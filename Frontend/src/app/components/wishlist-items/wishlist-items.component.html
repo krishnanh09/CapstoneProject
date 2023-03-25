@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row" class="mb-3" style="display:flex; justify-content: right; align-items: right;position:sticky;top:5%">
+        <button type="button" class="btn btn-danger" style="border:1px solid black;margin:1%; width:10rem;" (click)="onHome($event)">Home</button> 
+    </div>
+    <p-table [value]="wishlist" [tableStyle]="{'max-width': '60rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ProductName</th>
+                <th>Image</th>
+                <th>Category</th>                
+                <th>Price</th>                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.productName}}</td>
+                <td><img [src]="product.image" class="d-block w-100" alt="Biscuits" height="100" width="100"/></td>
+                <td>{{product.category}}</td>   
+                <td>{{product.price}}</td>               
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

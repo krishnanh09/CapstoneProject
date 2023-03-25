@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <form [formGroup]="loginForm">
+        <div class="login_container">
+            <h4 class="text-center mb-2">Grocery Login</h4>
+            <div class="input-group mb-3">
+                <div class="input-group-text">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <input type="email" class="form-control" placeholder="Email" formControlName="email" aria-label="Text input with checkbox">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-text">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <input type="password" class="form-control" formControlName="password" placeholder="Password"
+                    aria-label="Text input with radio button">
+            </div>
+            <div class="text-warning mb-2" *ngIf="isLoginClicked && !loginService.loggedIn">
+                Incorrect username or password
+            </div>
+            <div class="form-group text-center" style="display: flex;justify-content: center; align-items: center;">
+                <button type="button" class="btn btn-primary mx-2" (click)="loginUser($event)">Login</button>
+                <button type="button" class="btn btn-primary mx-2" (click)="signUp($event)">SignUp</button>                
+            </div>            
+        </div>
+    </form>
+    <p-progressSpinner *ngIf="onLoading"></p-progressSpinner>
+</div>
+

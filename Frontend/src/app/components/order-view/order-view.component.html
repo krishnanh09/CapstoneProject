@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <h5 style="font-weight: 700;color:black;font-size:22px;" class="mb-3">Order Section</h5>
+    <div *ngFor="let item of orders">
+        <button type="button" class="btn btn-primary" style="border:1px solid black;margin:1%; width:15rem;" (click)="displayItems($event, item._id)">{{item._id}}</button>
+    </div>
+
+    <div *ngIf="isTableVisible">
+        <p-table [value]="selectedOrder" [tableStyle]="{'max-width': '60rem'}">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ProductName</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Price</th>                
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-order>
+                <tr>
+                    <td>{{order.productName}}</td>
+                    <td>{{order.category}}</td> 
+                    <td>{{order.quantity}}</td>
+                    <td>{{order.price}}</td>                
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <tr>
+                    <td>Amount</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{amount}}</td>
+                </tr>           
+            </ng-template>
+        </p-table>
+    </div>
+    
+</div>

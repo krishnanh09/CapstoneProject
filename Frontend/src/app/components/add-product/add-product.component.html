@@ -1,0 +1,60 @@
+<div class="container-fluid" *ngIf="verifyAdmin">
+    <div class="card-section" style="position: relative; left:50%; top:50%; transform:translate(-20%,50%)">
+        <div class="card" style="width:40rem">
+            <div class="card-header" style="display:flex;justify-content: center;align-items: center;">
+                <h5 style="font-weight: 700;font-size: 22px;color:black">Add New Product</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="productForm">
+                    <div class="row my-1">
+                        <div class="col-6">
+                            <label for="ProductName" style="font-weight: 600;font-size: 14px;color:lightgrey">Product
+                                Name</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" pInputText formControlName="productName" />
+                        </div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col-6">
+                            <label for="ProductName" style="font-weight: 600;font-size: 14px;color:lightgrey">Price</label>    
+                        </div>
+                        <div class="col-6">
+                            <input type="text" pInputText formControlName="price" />
+                        </div>
+                    </div>
+                    <div class="row my-1">
+                        <div class="col-6">
+                            <label for="ProductName"
+                                style="font-weight: 600;font-size: 14px;color:lightgrey">Category</label>
+    
+                        </div>
+                        <div class="col-6">
+                            <p-dropdown [options]="categories" formControlName="category" placeholder="Please Select"
+                                optionLabel="name" (onChange)="changeCategory($event)"></p-dropdown>
+                        </div>
+                    </div>
+                    <!-- <div class="row my-1">
+                        <div class="col-6">
+                            <label for="ProductImage" style="font-weight: 600;font-size: 14px;color:lightgrey">Product
+                                Image</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="file" #fileSelected pInputText formControlName="productImage"  (change)="changeImage($event)"/>
+                        </div>
+                    </div>
+                    <div class="image-preview" style="display: flex;justify-content: center;align-items: center;"*ngIf="imagePreview !== '' && imagePreview">
+                        <img [src]="imagePreview" [alt]="productForm.value.productName" />
+                    </div> -->
+                    
+                </form>
+            </div>
+            <div class="card-footer" style="display:flex;justify-content: center;align-items: center;">
+                <button type="button" class="btn btn-light" style="border:1px solid black;margin:1%; width:10rem;" (click)="onCancel($event)" >Cancel</button>
+                <button type="button" class="btn btn-primary" style="border:1px solid black;margin:1%; width:10rem;" (click)="onSave($event)" >Save</button>
+            </div>
+        </div>
+    </div>        
+</div>
+
+<app-acess-alert [dialog]="dialog"></app-acess-alert>

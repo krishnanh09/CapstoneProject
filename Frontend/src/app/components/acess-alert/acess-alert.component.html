@@ -1,0 +1,13 @@
+<div *ngIf="dialog.visibility">
+    <p-dialog [(visible)]="dialog.visibility" position="center">
+        <ng-template pTemplate="header">
+            <h5 style="font-size:16px;font-weight:700;color:black">{{dialog.title}}</h5>
+        </ng-template>
+        <ng-template pTemplate="content">
+            <p style="font-weight: 700;color:black;font-size:14px;">{{dialog.message}}</p>
+        </ng-template>        
+        <ng-template pTemplate="footer">   
+            <button type="button" class="btn btn-light" style="border:1px solid black;margin:1%; width:10rem;" (click)="onAccept($event)" >OK</button>         
+        </ng-template>
+    </p-dialog>
+</div>

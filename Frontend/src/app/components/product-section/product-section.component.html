@@ -1,0 +1,55 @@
+<div>
+    <app-carousel-section [carouselDetails]="carouselDetails"></app-carousel-section>
+</div>
+
+<div class="flex-container">
+    <div *ngFor="let item of products; let i=index;">
+        <app-product [product]="item" (productAddedToCart)="onNewProductsAdded($event)" (productWishlisted)="onProductWishlisted($event)"></app-product>
+    </div>
+</div>
+
+<div class="row" style="display:flex; justify-content: right; align-items: right;position:sticky;bottom:0;">
+    <button type="button" class="btn btn-primary" style="border:1px solid black;margin:1%; width:10rem;" (click)="onCart($event)">Cart</button> 
+    <button type="button" class="btn btn-secondary" style="border:1px solid black;margin:1%; width:10rem;" [disabled]="!wishlistPresent" (click)="onWishlist($event)">Wishlist</button> 
+    <button type="button" class="btn btn-danger" style="border:1px solid black;margin:1%; width:10rem;" (click)="onCheckOut($event)">CheckOut</button>       
+</div>
+
+<div *ngIf="dialog.visibility">
+<p-dialog [(visible)]="dialog.visibility" position="center">
+    <ng-template pTemplate="header">
+        <h5 style="font-size:16px;font-weight:700;color:black">{{dialog.title}}</h5>
+    </ng-template>
+    <ng-template pTemplate="content">
+        <p-table [value]="cartProduct" [tableStyle]="{'max-width': '60rem'}">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ProductName</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total Price</th>                
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{product.productName}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td>{{product.price}}</td>   
+                    <td>{{product.price * product.quantity}}</td>             
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="footer">
+            </ng-template>
+        </p-table>
+    </ng-template> 
+    <ng-template pTemplate="footer">
+        <div class="row" style="display:flex;justify-content: center;align-items: center;">
+            <button type="button" class="btn btn-primary" style="border:1px solid black;margin:1%; width:10rem;" (click)="onCloseCart($event)">Close Cart</button> 
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+    
+</div>

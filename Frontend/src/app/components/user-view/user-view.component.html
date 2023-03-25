@@ -1,0 +1,23 @@
+<div class="container-fluid" *ngIf="verifyAdmin">
+    <p-table [value]="user" [tableStyle]="{'max-width': '60rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>User</th>
+                <th>Type</th>            
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td>{{user.email}}</td>
+                <td>{{user.userType}}</td>               
+                <td>                    
+                    <button type="button" class="btn btn-light" style="border:1px solid black;margin:1%; width:10rem;" (click)="onDelete($event,user)" >Delete</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<app-acess-alert [dialog]="dialog"></app-acess-alert>
+
